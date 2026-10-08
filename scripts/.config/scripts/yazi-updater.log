@@ -1,0 +1,27 @@
+
+📅 [2026-10-06 20:32:57] Starting Update Validation Loop...
+🔍 Checking for Yazi updates via Cargo Binstall...
+cargo-binstall:  INFO resolve: Resolving package: 'yazi-cli'
+cargo-binstall:  INFO resolve: Resolving package: 'yazi-fm'
+cargo-binstall:  INFO resolve: yazi-cli v26.5.6 is already installed, use --force to override
+cargo-binstall:  INFO resolve: yazi-fm v26.5.6 is already installed, use --force to override
+cargo-binstall:  INFO Done in 3.021616963s
+🎉 Yazi successfully updated from vOLDVERtovNEW_VER!
+
+📅 [2026-10-06 20:33:42] Starting Update Validation Loop...
+🔍 Checking for Yazi updates via Cargo Binstall...
+cargo-binstall:  INFO resolve: Resolving package: 'yazi-cli'
+cargo-binstall:  INFO resolve: Resolving package: 'yazi-fm'
+cargo-binstall:  INFO resolve: yazi-cli v26.5.6 is already installed, use --force to override
+cargo-binstall:  INFO resolve: yazi-fm v26.5.6 is already installed, use --force to override
+cargo-binstall:  INFO Done in 1.976199633s
+🎉 Yazi successfully updated from vOLDVERtovNEW_VER!
+
+📅 [2026-10-07 21:57:15] Starting Update Validation Loop...
+🔍 Checking for Yazi updates via Cargo Binstall...
+cargo-binstall:  INFO resolve: Resolving package: 'yazi-cli'
+cargo-binstall:  INFO resolve: Resolving package: 'yazi-fm'
+cargo-binstall:  INFO resolve: yazi-cli v26.5.6 is already installed, use --force to override
+cargo-binstall:  INFO resolve: yazi-fm v26.5.6 is already installed, use --force to override
+cargo-binstall:  INFO Done in 3.994657283s
+✅ Yazi is already up to date (v26.5.6).
