@@ -1,0 +1,4 @@
+# Ignore systemd activation state folders
+*.target.wants/
+*.wants/
+
