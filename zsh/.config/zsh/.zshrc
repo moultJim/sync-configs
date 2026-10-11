@@ -145,6 +145,7 @@ autoload -Uz up
 autoload -Uz ftldr
 autoload -Uz y
 autoload -Uz gu
+autoload -Uz cht
 
 # ==============================================================================
 # Prompt Initialization (Must remain at the absolute bottom)

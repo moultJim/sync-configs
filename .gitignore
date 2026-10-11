@@ -1,4 +1,11 @@
 # Ignore systemd activation state folders
 *.target.wants/
 *.wants/
+# Ignore zsh plugins
+/zsh/.config/zsh/.antidote
+/zsh/.config/zsh/.zcompdump
+/zsh/.config/zsh/.zsh_plugins.zsh
+# Ignore yazi-updater.log
+/scripts/.config/scripts/yazi-updater.log
+
 
