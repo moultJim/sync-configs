@@ -1,0 +1,3 @@
+${NVIM_APPNAME:="nvim-jm"}                                           
+export NVIM_APPNAME                                                  
+cd ~/.chts && nvim "$( ls | fzf )"
