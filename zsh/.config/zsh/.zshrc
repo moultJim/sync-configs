@@ -155,3 +155,4 @@ eval "$(zoxide init zsh)"
 if [[ ! -n ${(f)functions[starship_zle-keymap-select]} ]]; then
     eval "$(starship init zsh)"
 fi
+echo 'if [ $TILIX_ID ] || [ $VTE_VERSION ]; then source /etc/profile.d/vte-2.91.sh; fi' >> ~/.config/zsh/.zshrc
