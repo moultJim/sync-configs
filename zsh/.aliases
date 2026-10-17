@@ -16,7 +16,7 @@ alias nvim='$HOME/.local/share/bob/nvim-bin/nvim'
 alias srv='ssh jim@svr1'
 alias wake-server='ssh root@100.74.107.23 "etherwake -i br-lan c4:34:6b:4e:4f:ca"'
 
-if [[ "$HOST" == "xub" ]]; then
+if [[ "$local_host" == "xub" ]]; then
   alias upsys='sudo apt update && sudo apt upgrade -y'
   alias xi='bash xinp.sh'
   alias xcopy='xclip -sel clip'
@@ -24,7 +24,7 @@ if [[ "$HOST" == "xub" ]]; then
   alias nas='mount /mnt/brume_nas && cd /mnt/brume_nas'
 	# VNC over SSH: Connect localhost after running.
 	alias vnc-tunnel='ssh -L 5901:localhost:5901 jim@svr1'
-elif [[ "$HOST" == "penguin" ]]; then
+elif [[ "$local_host" == "penguin" ]]; then
   alias upsys='sudo apt update && sudo apt dist-upgrade -y'
   alias garcon-restart='sudo systemctl restart sommelier@0'
   alias xcopy='wl-copy'
