@@ -155,7 +155,10 @@ eval "$(zoxide init zsh)"
 if [[ ! -n ${(f)functions[starship_zle-keymap-select]} ]]; then
     eval "$(starship init zsh)"
 fi
-echo 'if [ $TILIX_ID ] || [ $VTE_VERSION ]; then source /etc/profile.d/vte-2.91.sh; fi' >> ~/.config/zsh/.zshrc
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then source /etc/profile.d/vte-2.91.sh; fi
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then source /etc/profile.d/vte-2.91.sh; fi
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then source /etc/profile.d/vte-2.91.sh; fi
+# Source the VTE integration script if it actually exists on the system
+if [ -f /etc/profile.d/vte-2.91.sh ]; then
+    source /etc/profile.d/vte-2.91.sh
+elif [ -f /etc/profile.d/vte.sh ]; then
+    source /etc/profile.d/vte.sh
+fi
+
