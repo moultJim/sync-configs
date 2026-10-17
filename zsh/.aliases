@@ -16,6 +16,9 @@ alias nvim='$HOME/.local/share/bob/nvim-bin/nvim'
 alias srv='ssh jim@svr1'
 alias wake-server='ssh root@100.74.107.23 "etherwake -i br-lan c4:34:6b:4e:4f:ca"'
 
+# Query working system binary 
+local_host=$(hostname)
+
 if [[ "$local_host" == "xub" ]]; then
   alias upsys='sudo apt update && sudo apt upgrade -y'
   alias xi='bash xinp.sh'
