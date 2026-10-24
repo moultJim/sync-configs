@@ -1,3 +1,5 @@
+.gitignore
+*.log
 # Ignore systemd activation state folders
 *.target.wants/
 *.wants/
@@ -5,7 +7,6 @@
 /zsh/.config/zsh/.antidote
 /zsh/.config/zsh/.zcompdump
 /zsh/.config/zsh/.zsh_plugins.zsh
-# Ignore yazi-updater.log
-/scripts/.config/scripts/yazi-updater.log
-
+# Nvim
+/nvim/.config/nvim/nvim-pack-lock.json
 

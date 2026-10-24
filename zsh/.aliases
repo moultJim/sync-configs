@@ -3,6 +3,7 @@ alias tailstat='tailscale status'
 alias help=run-help
 alias jv='NVIM_APPNAME=nvim-jm nvim'
 alias ba='NVIM_APPNAME=nvim-ba nvim'
+alias tst='NVIM_APPNAME=nvim-tst nvim'
 alias mm='NVIM_APPNAME=nvim-mm nvim'
 alias vi='$HOME/.local/share/bob/nvim-bin/nvim'
 alias ez='eza -la --icons=always --color=always --git --group-directories-last --no-user --no-time'
@@ -37,6 +38,5 @@ elif [[ "$local_host" == "penguin" ]]; then
 	alias mountnas='rclone --no-check-certificate mount brume:disk1_part1 /mnt/brume_nas --vfs-cache-mode writes --dir-cache-time 0s --daemon'
 	sudo ip link set dev eth0 mtu 1200
   alias cpaste='wl-paste'
-  alias sysup='sudo apt update && sudo apt dist-upgrade -y'
   alias cddl='cd /mnt/chromeos/removable/sd'
 fi
