@@ -72,5 +72,17 @@ General Rule for GitHub Cloning: click green Code button, choose SSH tab.
   *.log
   .cache/
 
+# Github instruct on creating new repo
+echo "# nvim-ba" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/moultJim/nvim-ba.git
+git push -u origin main
 
+# Github instruct on pushing an existing repo
+git remote add origin https://github.com/moultJim/nvim-ba.git
+git branch -M main
+git push -u origin main
 

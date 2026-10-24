@@ -4,6 +4,7 @@ alias help=run-help
 alias jv='NVIM_APPNAME=nvim-jm nvim'
 alias ba='NVIM_APPNAME=nvim-ba nvim'
 alias mm='NVIM_APPNAME=nvim-mm nvim'
+alias vi='$HOME/.local/share/bob/nvim-bin/nvim'
 alias ez='eza -la --icons=always --color=always --git --group-directories-last --no-user --no-time'
 alias tree='eza --icons=always --color=always --long --git'
 alias cat='bat'
