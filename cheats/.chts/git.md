@@ -86,3 +86,5 @@ git remote add origin https://github.com/moultJim/nvim-ba.git
 git branch -M main
 git push -u origin main
 
+# Sub-module update
+git submodule update --init --recursive
