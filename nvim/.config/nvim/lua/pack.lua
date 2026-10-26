@@ -1,27 +1,43 @@
+-- 1. Register your plugins via vim.pack
 vim.pack.add({
   { src = "https://github.com/catppuccin/nvim",             name = "catppuccin" },
   { src = "https://github.com/neovim/nvim-lspconfig" },
   { src = "https://github.com/rafamadriz/friendly-snippets" },
-  { src = "https://github.com/nvim-mini/mini.nvim" }
+  { src = "https://github.com/nvim-mini/mini.nvim" },
+  -- Add lazydev to the main setup block so both profiles inherit it
+  { src = "https://github.com/folke/lazydev.nvim" } 
 })
 
--- 1. Tell the server configuration how to behave globally
+if vim.env.NVIM_APPNAME == "nvim-lu" then
+  vim.pack.add({
+    { src = "https://github.com/urtzienriquez/learnlua.nvim" }
+  })
+end
+
+-- 2. Initialize lazydev BEFORE calling vim.lsp.enable
+-- This dynamically sets up library paths so lua_ls remains fast.
+require("lazydev").setup({
+  library = {
+    -- Automatically loads type definitions for vim.uv / vim.loop async functions
+    { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+    -- If you are in the sandbox, explicitly ensure learnlua is indexed by the LSP
+    "learnlua.nvim",
+  },
+})
+
+-- 3. Pass clean global settings to your server configuration
+-- Note: lazydev handles the 'vim' global and runtime pathing automatically now!
 table.insert(vim.lsp.config, {
   name = 'lua_ls',
   settings = {
     Lua = {
-      diagnostics = {
-        globals = { 'vim' },
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
+      -- You can keep this block bare or add formatting preferences.
+      -- Workspace library path handling has been safely handed off to lazydev.
     },
   }
 })
--- :lua vim.diagnostic.open_float() on warning lines gives explain
 
--- 2. Simply enable the server natively
+-- 4. Simply enable the server natively
 vim.lsp.enable('lua_ls')
 
 require('catppuccin').setup({ flavour = 'mocha' })

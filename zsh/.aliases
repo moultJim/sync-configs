@@ -1,8 +1,7 @@
 alias dwnsys='sudo shutdown -h now'
 alias tailstat='tailscale status'
 alias help=run-help
-alias jv='NVIM_APPNAME=nvim-jm nvim'
-alias ba='NVIM_APPNAME=nvim-ba nvim'
+alias lu='NVIM_APPNAME=nvim-lu nvim'
 alias tst='NVIM_APPNAME=nvim-tst nvim'
 alias mm='NVIM_APPNAME=nvim-mm nvim'
 alias vi='$HOME/.local/share/bob/nvim-bin/nvim'

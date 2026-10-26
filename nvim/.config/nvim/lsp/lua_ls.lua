@@ -1,10 +1,18 @@
 return {
   settings = {
     Lua = { 
-      runtime = { version = "LuaJIT" },
+      runtime = { 
+        version = "LuaJIT",
+        -- Ensure the server knows where to look for standard library paths
+        path = vim.split(package.path, ";"),
+      },
       workspace = { 
         checkThirdParty = false,
-        library = vim.api.nvim_get_runtime_file("", true),
+        -- Explicitly target Neovim core and your own config (ignores bloated plugin folders)
+        library = {
+          vim.env.VIMRUNTIME,
+          vim.fn.expand("~/.config/nvim"),
+        },
       },
       diagnostics = { globals = { "vim" } },
     },
@@ -25,3 +33,4 @@ return {
     })
   end,
 }
+

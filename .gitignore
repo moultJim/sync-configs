@@ -9,4 +9,4 @@
 /zsh/.config/zsh/.zsh_plugins.zsh
 # Nvim
 /nvim/.config/nvim/nvim-pack-lock.json
-
+/nvim-tst/.config/nvim-tst/nvim-pack-lock.json
