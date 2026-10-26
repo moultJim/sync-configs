@@ -5,7 +5,7 @@ vim.pack.add({
   { src = "https://github.com/rafamadriz/friendly-snippets" },
   { src = "https://github.com/nvim-mini/mini.nvim" },
   -- Add lazydev to the main setup block so both profiles inherit it
-  { src = "https://github.com/folke/lazydev.nvim" } 
+  { src = "https://github.com/folke/lazydev.nvim" }
 })
 
 if vim.env.NVIM_APPNAME == "nvim-lu" then
@@ -27,17 +27,16 @@ require("lazydev").setup({
 
 -- 3. Pass clean global settings to your server configuration
 -- Note: lazydev handles the 'vim' global and runtime pathing automatically now!
-table.insert(vim.lsp.config, {
-  name = 'lua_ls',
+vim.lsp.config('lua_ls', {
+  cmd = { 'lua-language-server' }, -- Forces Neovim to dynamically locate your Homebrew installation in $PATH
   settings = {
     Lua = {
-      -- You can keep this block bare or add formatting preferences.
       -- Workspace library path handling has been safely handed off to lazydev.
     },
   }
 })
 
--- 4. Simply enable the server natively
+-- 4. Explicitly boot and enable the language server for its targeted filetypes
 vim.lsp.enable('lua_ls')
 
 require('catppuccin').setup({ flavour = 'mocha' })
@@ -221,15 +220,15 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufEnter" }, {
 -- *  sniprun setup    ************
 -- ****************************************************************************
 -- Initialize sniprun
-require'sniprun'.setup({
+require 'sniprun'.setup({
   -- Custom options can go here, but defaults work seamlessly out of the box
-  selected_interpreters = {},     -- Use all available interpreters
-  repl_enable = {},               -- Enabled REPL-like behaviors for supported languages
-  
+  selected_interpreters = {}, -- Use all available interpreters
+  repl_enable = {},           -- Enabled REPL-like behaviors for supported languages
+
   -- The display mode for the code output (e.g., Virtual Text, Floating Window)
   display = {
-    "Classic",                    -- Echoes in the command line
-    "VirtualTextOk",              -- Shows inline results for successful runs
+    "Classic",       -- Echoes in the command line
+    "VirtualTextOk", -- Shows inline results for successful runs
   },
 })
 
@@ -241,4 +240,3 @@ vim.keymap.set('v', '<leader>ff', ':<C-U>SnipRun<cr>',
   { silent = true, desc = "Run visual selection" })
 vim.keymap.set('n', '<leader>fc', '<cmd>SnipReset<cr>',
   { silent = true, desc = "Reset sniprun REPL/cache" })
-
