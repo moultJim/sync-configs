@@ -30,10 +30,10 @@ local help_group = vim.api.nvim_create_augroup(
 --   end,
 -- })
 
-  -- Don't autocomment next line after comment
+-- Don't autocomment next line after comment
 vim.api.nvim_create_autocmd("BufEnter", {
   callback = function()
--- "r" is auto after <cr>; "o" after o or O ins; "c" is for hard-wraps
+    -- "r" is auto after <cr>; "o" after o or O ins; "c" is for hard-wraps
     vim.opt.formatoptions:remove({ "c", "r", "o" })
   end,
 })
@@ -44,7 +44,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     -- Record the ID of the window you came from
     local original_win = vim.fn.win_getid(vim.fn.winnr('#'))
-    
+
     -- Map 'q' inside this specific help buffer to close it and jump back
     vim.keymap.set("n", "q", function()
       -- Close the help window
@@ -53,8 +53,11 @@ vim.api.nvim_create_autocmd("FileType", {
       if vim.api.nvim_win_is_valid(original_win) then
         vim.api.nvim_set_current_win(original_win)
       end
-    end, { buffer = true, silent = true,
-      desc = "Close help and return to previous window" }
+    end, {
+      buffer = true,
+      silent = true,
+      desc = "Close help and return to previous window"
+    }
     )
   end,
 })
@@ -63,28 +66,36 @@ vim.api.nvim_create_autocmd("FileType", {
 local term_group = vim.api.nvim_create_augroup("GlobalTerminalSettings", { clear = true })
 
 vim.api.nvim_create_autocmd({ "TermOpen", "BufEnter" }, {
-    group = term_group,
-    pattern = "term://*",
-    callback = function()
-        if vim.bo.buftype == "terminal" then
-            -- 1. Distraction-free UI adjustments
-            vim.opt_local.number = false
-            vim.opt_local.relativenumber = false
-            vim.opt_local.signcolumn = "no"
-            
-            -- 2. Force-inject the toggle-out keymap directly inside this specific terminal buffer
-            -- This overrides any environment/Chromebook key swallowing.
-            local bufnr = vim.api.nvim_get_current_buf()
-            vim.keymap.set("t", "<space>tt", function()
-                -- Drop out of Terminal mode into Normal mode instantly
-                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
-                -- Force hide the floating window via the user command we made
-                vim.cmd("Floaterminal")
-            end, { buffer = bufnr, desc = "Toggle terminal from within" })
+  group = term_group,
+  pattern = "term://*",
+  callback = function()
+    if vim.bo.buftype == "terminal" then
+      -- 1. Distraction-free UI adjustments
+      vim.opt_local.number = false
+      vim.opt_local.relativenumber = false
+      vim.opt_local.signcolumn = "no"
 
-            -- 3. Automatically jump into insert mode
-            vim.cmd("startinsert")
-        end
-    end,
+      -- 2. Force-inject the toggle-out keymap directly inside this specific terminal buffer
+      -- This overrides any environment/Chromebook key swallowing.
+      local bufnr = vim.api.nvim_get_current_buf()
+      vim.keymap.set("t", "<space>tt", function()
+        -- Drop out of Terminal mode into Normal mode instantly
+        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-\\><C-n>", true, false, true), "n", false)
+        -- Force hide the floating window via the user command we made
+        vim.cmd("Floaterminal")
+      end, { buffer = bufnr, desc = "Toggle terminal from within" })
+
+      -- 3. Automatically jump into insert mode
+      vim.cmd("startinsert")
+    end
+  end,
 })
 
+-- Core Highlighting is now safely handled natively by Neovim.
+-- To ensure treesitter highlighting starts up on your filetypes automatically:
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'lua', 'vim', 'markdown', 'bash' }, -- Add languages as needed
+  callback = function()
+    vim.treesitter.start()
+  end,
+})

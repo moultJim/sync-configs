@@ -39,6 +39,7 @@ vim.lsp.config('lua_ls', {
 -- 4. Explicitly boot and enable the language server for its targeted filetypes
 vim.lsp.enable('lua_ls')
 
+require("plugins.treesitter")
 require('catppuccin').setup({ flavour = 'mocha' })
 local mini_icons = require('mini.icons')
 mini_icons.setup({})
