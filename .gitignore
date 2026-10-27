@@ -1,4 +1,3 @@
-.gitignore
 *.log
 # Ignore systemd activation state folders
 *.target.wants/
@@ -10,3 +9,9 @@
 # Nvim
 /nvim/.config/nvim/nvim-pack-lock.json
 /nvim-tst/.config/nvim-tst/nvim-pack-lock.json
+# Treesitter
+# Ignore local machine architectures compiled by tree-sitter
+parser/
+*.so
+*.dll
+
