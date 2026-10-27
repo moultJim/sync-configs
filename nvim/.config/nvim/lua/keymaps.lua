@@ -75,4 +75,3 @@ vim.keymap.set(
   "<cmd>!chmod +x %<CR>",
   { silent = true, desc = "makes file executable" }
 )
-
