@@ -88,3 +88,7 @@ git push -u origin main
 
 # Sub-module update
 git submodule update --init --recursive
+
+# Make submodule updates automatic
+git config --global submodule.recurse true
+
