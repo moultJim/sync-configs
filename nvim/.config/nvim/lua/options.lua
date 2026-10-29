@@ -161,10 +161,11 @@ vim.opt.guicursor =
 -- ========================================================================== --
 -- 9. FOLDING & SPLITS (Fixed Tree-sitter dependency)
 -- ========================================================================== --
-vim.opt.foldmethod = "syntax" -- Use light, built-in regex syntax folding
-vim.opt.foldlevel = 99        -- start with all folds open
-vim.opt.splitbelow = true     -- horizontal splits go below
-vim.opt.splitright = true     -- vertical splits go right
+vim.opt.foldmethod = 'expr'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.opt.foldenable = true -- Folds open by default
+vim.opt.splitbelow = true -- horizontal splits go below
+vim.opt.splitright = true -- vertical splits go right
 
 -- Command-line tab completion
 vim.opt.wildmenu = true
